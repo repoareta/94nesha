@@ -34,13 +34,19 @@ class PasienCovidController extends Controller
                     return $data->jenkel == 'L' ? 'Laki-laki' : 'Perempuan';
                 })
                 ->addColumn('tgl_positif', function($data){
-                    return Carbon::parse($data->tgl_positif)->locale('id')->isoFormat('LL');
+                    if($data->tgl_positif){
+                        return Carbon::parse($data->tgl_positif)->locale('id')->isoFormat('LL');
+                    }
                 })
                 ->addColumn('province', function($data){
-                    return $data->province->name;
+                    if($data->province){
+                        return $data->province->name;
+                    }
                 })
                 ->addColumn('regency', function($data){
-                    return $data->regency->name;
+                    if($data->regency){
+                        return $data->regency->name;
+                    }
                 })
                 ->addColumn('district', function($data){
                     if($data->district){
@@ -53,13 +59,17 @@ class PasienCovidController extends Controller
                     }
                 })
                 ->addColumn('status', function($data){
-                    return $data->status == true ? 'Isolasi Mandiri' : 'Rumah Sakit';
+                    if($data->status){
+                        return $data->status == true ? 'Isolasi Mandiri' : 'Rumah Sakit';
+                    }
                 })
                 ->addColumn('action', function($data){
-                    return '
-                        <button class="btn btn-success btn-shadow-hover font-weight-bold mr-2" data-id="'.$data->id.'" id="toPenyintas">Menjadi Penyintas</button>
-                        <button class="btn btn-danger btn-shadow-hover font-weight-bold" data-id="'.$data->id.'" id="toMeninggal">Meninggal Dunia</button>
-                    ';
+                    if(!$data->meninggal_dunia){
+                        return '
+                            <button class="btn btn-success btn-shadow-hover font-weight-bold mr-2" data-id="'.$data->id.'" id="toPenyintas">Menjadi Penyintas</button>
+                            <button class="btn btn-danger btn-shadow-hover font-weight-bold" data-id="'.$data->id.'" id="toMeninggal">Meninggal Dunia</button>
+                        ';
+                    }
                 })
                 ->rawColumns(['action'])
                 ->make();

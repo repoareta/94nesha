@@ -30,13 +30,19 @@ class PenyintasCovidController extends Controller
                     return $data->jenkel == 'L' ? 'Laki-laki' : 'Perempuan';
                 })
                 ->addColumn('tgl_negatif', function($data){
-                    return Carbon::parse($data->tgl_negatif)->locale('id')->isoFormat('LL');
+                    if($data->tgl_negatif){
+                        return Carbon::parse($data->tgl_negatif)->locale('id')->isoFormat('LL');
+                    }
                 })
                 ->addColumn('province', function($data){
-                    return $data->province->name;
+                    if($data->province){
+                        return $data->province->name;
+                    }
                 })
                 ->addColumn('regency', function($data){
-                    return $data->regency->name;
+                    if($data->regency){
+                        return $data->regency->name;
+                    }
                 })
                 ->addColumn('district', function($data){
                     if($data->district){
@@ -49,7 +55,9 @@ class PenyintasCovidController extends Controller
                     }
                 })
                 ->addColumn('donor_plasma', function($data){
-                    return $data->donor_plasma == true ? 'Iya' : 'Tidak';
+                    if($data->donor_plasma){
+                        return $data->donor_plasma == true ? 'Iya' : 'Tidak';
+                    }
                 })
                 ->make();
         }

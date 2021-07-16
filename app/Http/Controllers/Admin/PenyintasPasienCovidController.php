@@ -43,10 +43,14 @@ class PenyintasPasienCovidController extends Controller
                     }
                 })
                 ->addColumn('province', function($data){
-                    return $data->province->name;
+                    if($data->province){
+                        return $data->province->name;
+                    }
                 })
                 ->addColumn('regency', function($data){
-                    return $data->regency->name;
+                    if($data->regency){
+                        return $data->regency->name;
+                    }
                 })
                 ->addColumn('district', function($data){
                     if($data->district){
