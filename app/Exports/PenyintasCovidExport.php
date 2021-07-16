@@ -24,7 +24,7 @@ class PenyintasCovidExport implements FromCollection, WithHeadings
             'no_kontak',
             'jenkel',
             'goldar',
-            'tgl_positif',
+            'tgl_negatif',
             'province_id',
             'regency_id',
             'district_id',
@@ -34,7 +34,7 @@ class PenyintasCovidExport implements FromCollection, WithHeadings
             ->get();
         
         foreach($datas as $data){
-            $data->tgl_positif = Carbon::parse($data->tgl_positif)->locale('id')->isoFormat('LL');
+            $data->tgl_negatif = Carbon::parse($data->tgl_negatif)->locale('id')->isoFormat('LL');
             if($data->jenkel == 'L'){
                 $data->jenkel = 'Laki-laki';
             }else{
@@ -63,7 +63,7 @@ class PenyintasCovidExport implements FromCollection, WithHeadings
             'No Kontak',
             'Jenkel',
             'Goldar',
-            'Tanggal Positif',
+            'Tanggal Negatif',
             'Provinsi',
             'Kabupaten',
             'Kecamatan',

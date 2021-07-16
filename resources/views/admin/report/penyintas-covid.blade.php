@@ -46,7 +46,7 @@
                             <th scope="col">No Kontak</th>
                             <th scope="col">Jenis Kelamin</th>
                             <th scope="col">Goldar</th>
-                            <th scope="col">Tanggal Positif</th>
+                            <th scope="col">Tanggal Negatif</th>
                             <th scope="col">Provinsi</th>
                             <th scope="col">Kabupaten</th>
                             <th scope="col">Kecamatan</th>
@@ -95,7 +95,7 @@
 				{data: 'no_kontak', name: 'no_kontak'},
 				{data: 'jenkel', name: 'jenkel'},
 				{data: 'goldar', name: 'goldar'},
-				{data: 'tgl_positif', name: 'tgl_positif'},
+				{data: 'tgl_negatif', name: 'tgl_negatif'},
 				{data: 'province', name: 'province'},
 				{data: 'regency', name: 'regency'},
 				{data: 'district', name: 'district'},

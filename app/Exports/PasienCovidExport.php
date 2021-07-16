@@ -24,7 +24,7 @@ class PasienCovidExport implements FromCollection, WithHeadings
                                 'no_kontak',
                                 'jenkel',
                                 'goldar',
-                                'tgl_negatif',
+                                'tgl_positif',
                                 'province_id',
                                 'regency_id',
                                 'district_id',
@@ -43,7 +43,7 @@ class PasienCovidExport implements FromCollection, WithHeadings
             }else{
                 $data->jenkel = 'Perempuan';
             }
-            $data->tgl_negaqtif = Carbon::parse($data->tgl_negaqtif)->locale('id')->isoFormat('LL');
+            $data->tgl_positif = Carbon::parse($data->tgl_positif)->locale('id')->isoFormat('LL');
             $data->province_id = $data->province->name;
             $data->regency_id = $data->regency->name;
             $data->district_id = $data->district ? $data->district->name : '';
@@ -63,7 +63,7 @@ class PasienCovidExport implements FromCollection, WithHeadings
             'No Kontak',
             'Jenkel',
             'Goldar',
-            'Tanggal Negatif',
+            'Tanggal Positif',
             'Provinsi',
             'Kabupaten',
             'Kecamatan',

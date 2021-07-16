@@ -25,7 +25,7 @@ class PenyintasCovidController extends Controller
     public function store(PenyintasCovidRequest $request)
     {
         $request->merge([
-            'tgl_positif' => Carbon::parse($request->tgl_positif)->format('Y-m-d'),
+            'tgl_negatif' => Carbon::parse($request->tgl_negatif)->format('Y-m-d'),
             'donor_plasma' => $request->donor_plasma == 'T' ? true : false
         ]);        
 

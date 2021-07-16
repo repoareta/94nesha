@@ -29,8 +29,8 @@ class PenyintasCovidController extends Controller
                 ->addColumn('jenkel', function($data){
                     return $data->jenkel == 'L' ? 'Laki-laki' : 'Perempuan';
                 })
-                ->addColumn('tgl_positif', function($data){
-                    return Carbon::parse($data->tgl_positif)->locale('id')->isoFormat('LL');
+                ->addColumn('tgl_negatif', function($data){
+                    return Carbon::parse($data->tgl_negatif)->locale('id')->isoFormat('LL');
                 })
                 ->addColumn('province', function($data){
                     return $data->province->name;

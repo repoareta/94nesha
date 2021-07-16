@@ -25,7 +25,7 @@ class PasienCovidController extends Controller
     public function store(PasienCovidRequest $request)
     {
         $request->merge([
-            'tgl_negatif' => Carbon::parse($request->tgl_positif)->format('Y-m-d'),
+            'tgl_positif' => Carbon::parse($request->tgl_positif)->format('Y-m-d'),
             'status' => $request->status == '0' ? true : false
         ]);        
 

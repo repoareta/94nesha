@@ -16,7 +16,7 @@ class PenyintasCovid extends Model
         'no_kontak',
         'jenkel',
         'goldar',
-        'tgl_positif',
+        'tgl_negatif',
         'province_id',
         'regency_id',
         'district_id',

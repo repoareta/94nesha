@@ -16,7 +16,7 @@ class PasienCovid extends Model
         'no_kontak',
         'jenkel',
         'goldar',
-        'tgl_negatif',
+        'tgl_positif',
         'province_id',
         'regency_id',
         'district_id',

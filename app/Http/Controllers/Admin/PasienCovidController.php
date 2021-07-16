@@ -33,8 +33,8 @@ class PasienCovidController extends Controller
                 ->addColumn('jenkel', function($data){
                     return $data->jenkel == 'L' ? 'Laki-laki' : 'Perempuan';
                 })
-                ->addColumn('tgl_negatif', function($data){
-                    return Carbon::parse($data->tgl_negatif)->locale('id')->isoFormat('LL');
+                ->addColumn('tgl_positif', function($data){
+                    return Carbon::parse($data->tgl_positif)->locale('id')->isoFormat('LL');
                 })
                 ->addColumn('province', function($data){
                     return $data->province->name;
@@ -94,7 +94,7 @@ class PasienCovidController extends Controller
         $penyintas->no_kontak = $pasien->no_kontak;
         $penyintas->jenkel = $pasien->jenkel;
         $penyintas->goldar = $pasien->goldar;
-        $penyintas->tgl_positif = Carbon::parse($request->tgl_positif)->format('Y-m-d');
+        $penyintas->tgl_negatif = Carbon::parse($request->tgl_negatif)->format('Y-m-d');
         $penyintas->province_id = $pasien->province_id;
         $penyintas->village_id = $pasien->village_id;
         $penyintas->regency_id = $pasien->regency_id;

@@ -45,7 +45,7 @@
                             <th scope="col">Nama Kontak</th>
                             <th scope="col">No Kontak</th>
                             <th scope="col">Jenis Kelamin</th>
-                            <th scope="col">Tanggal Negatif</th>
+                            <th scope="col">Tanggal Positiff</th>
                             <th scope="col">Goldar</th>
                             <th scope="col">Provinsi</th>
                             <th scope="col">Kabupaten</th>
@@ -83,9 +83,9 @@
                         @csrf
                         <input type="hidden" name="id">
                         <div class="form-group">
-                            <label class="font-size-h4">Tanggal Dinyatakan Positif</label>
+                            <label class="font-size-h4">Tanggal Dinyatakan Negatif</label>
                             <div class="input-group date mt-3">
-                                <input type="text" id="tanggalPositif" class="form-control" name="tgl_positif" readonly="readonly" placeholder="Pilih Tanggal">
+                                <input type="text" id="tanggalNegatif" class="form-control" name="tgl_negatif" readonly="readonly" placeholder="Pilih Tanggal">
                                 <div class="input-group-append">
                                     <span class="input-group-text">
                                         <i class="la la-calendar-check-o"></i>
@@ -199,7 +199,7 @@
 				{data: 'nama_kontak', name: 'nama_kontak'},
 				{data: 'no_kontak', name: 'no_kontak'},
 				{data: 'jenkel', name: 'jenkel'},
-				{data: 'tgl_negatif', name: 'tgl_negatif'},
+				{data: 'tgl_positif', name: 'tgl_positif'},
 				{data: 'goldar', name: 'goldar'},
 				{data: 'province', name: 'province'},
 				{data: 'regency', name: 'regency'},
@@ -214,7 +214,7 @@
 			]
 		});
 
-        $('#tanggalPositif').datepicker({
+        $('#tanggalNegatif').datepicker({
             format: 'dd-mm-yyyy',
             orientation: "left bottom",
             locale: 'id',

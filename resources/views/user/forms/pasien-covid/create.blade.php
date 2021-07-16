@@ -154,9 +154,9 @@
                     <!--begin::Body-->
                     <div class="card-body">
                         <div class="form-group">
-                            <label class="font-size-h4">Tanggal Dinyatakan Negatif <span class="text-danger font-size-sm">*</span></label>
+                            <label class="font-size-h4">Tanggal Dinyatakan Positif <span class="text-danger font-size-sm">*</span></label>
                             <div class="input-group date mt-3">
-                                <input type="text" id="tanggalNegatif" class="form-control" name="tgl_negatif" readonly="readonly" placeholder="Pilih Tanggal" value="{{ old('tgl_negatif') }}">
+                                <input type="text" id="tanggalPositif" class="form-control" name="tgl_positif" readonly="readonly" placeholder="Pilih Tanggal" value="{{ old('tgl_positif') }}">
                                 <div class="input-group-append">
                                     <span class="input-group-text">
                                         <i class="la la-calendar-check-o"></i>
@@ -289,7 +289,7 @@
 @push('page-scripts')
 <script>
     $(document).ready(function () {
-        $('#tanggalNegatif').datepicker({
+        $('#tanggalPositif').datepicker({
             format: 'dd-mm-yyyy',
             orientation: "left bottom",
             locale: 'id',
