@@ -27,10 +27,6 @@ class PenyintasCovidRequest extends FormRequest
             'nama' => 'required',
             'jurusan' => 'required',
             'jenkel' => 'required',
-            'tgl_negatif' => 'required',
-            'province_id' => 'required',
-            'regency_id' => 'required',
-            'donor_plasma' => 'required',
         ];
     }
 }

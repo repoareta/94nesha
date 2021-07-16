@@ -27,9 +27,6 @@ class PasienCovidRequest extends FormRequest
             'nama' => 'required',
             'jurusan' => 'required',
             'jenkel' => 'required',
-            'tgl_positif' => 'required',
-            'province_id' => 'required',
-            'regency_id' => 'required',
             'ket_status' => 'required_with:status'
         ];
     }

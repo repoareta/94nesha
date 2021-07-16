@@ -154,7 +154,7 @@
                     <!--begin::Body-->
                     <div class="card-body">
                         <div class="form-group">
-                            <label class="font-size-h4">Tanggal Dinyatakan Negatif <span class="text-danger font-size-sm">*</span></label>
+                            <label class="font-size-h4">Tanggal Dinyatakan Negatif</label>
                             <div class="input-group date mt-3">
                                 <input type="text" id="tanggalNegatif" class="form-control" name="tgl_negatif" readonly="readonly" placeholder="Pilih Tanggal" value="{{ old('tgl_negatif') }}">
                                 <div class="input-group-append">
@@ -173,7 +173,7 @@
                     <!--begin::Body-->
                     <div class="card-body">
                         <div class="form-group">
-                            <label class="font-size-h4">Provinsi <span class="text-danger font-size-sm">*</span></label>
+                            <label class="font-size-h4">Provinsi</label>
                             <select class="kt-select2 form-control mt-3" name="province_id" id="provinceSelect2">
                                 <option value="">Pilih Provinsi</option>
                                 @foreach ($provinces as $province)
@@ -192,7 +192,7 @@
                     <!--begin::Body-->
                     <div class="card-body">
                         <div class="form-group">
-                            <label class="font-size-h4">Kabupaten <span class="text-danger font-size-sm">*</span></label>
+                            <label class="font-size-h4">Kabupaten</label>
                             <select class="kt-select2 form-control mt-3" name="regency_id" id="regencySelect2">
                                 <option value="">Pilih Kabupaten</option>
                             </select>
@@ -246,7 +246,7 @@
                     <!--begin::Body-->
                     <div class="card-body"> 
                         <div class="form-group">
-                            <label class="font-size-h4">Bisa Donor Plasma <span class="text-danger font-size-sm">*</span></label>
+                            <label class="font-size-h4">Bisa Donor Plasma</label>
                             <div class="radio-list mt-3">
                                 <label class="radio">
                                     <input type="radio" name="donor_plasma" value="T" {{ old('donor_plasma') == 'T' ? 'checked' : '' }}>
