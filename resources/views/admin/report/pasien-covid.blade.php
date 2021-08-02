@@ -202,7 +202,7 @@
         var t = $('#dataTable').DataTable({   
             fixedColumns: {
                 leftColumns: 3,
-                rightColumns: 2
+                rightColumns: 1
             },         
             scrollX: true,
             processing: true,
