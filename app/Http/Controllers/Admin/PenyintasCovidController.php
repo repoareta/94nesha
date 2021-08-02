@@ -17,15 +17,20 @@ use App\Exports\PenyintasCovidExport;
 use Yajra\DataTables\Facades\DataTables;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
-
+use App\Charts\MonthlyPenyintasChart;
+use App\Charts\ThisDayPenyintasPasienChart;
 class PenyintasCovidController extends Controller
 {
-    public function index()
+    public function index(MonthlyPenyintasChart $monthlyChart, ThisDayPenyintasPasienChart $dayChart)
     {
         if(request()->ajax()){
-            $Query = PenyintasCovid::all();
+            $Query = PenyintasCovid::orderBy('id', 'DESC');
             return DataTables::of($Query)
                 ->addIndexColumn()
+                ->setRowClass(function ($data) {
+                    $hariIni = Carbon::parse($data->created_at)->format('Y-m-d');
+                    return $hariIni == Carbon::now()->format('Y-m-d') ? 'bg-success text-white' : '';
+                })
                 ->addColumn('jenkel', function($data){
                     return $data->jenkel == 'L' ? 'Laki-laki' : 'Perempuan';
                 })
@@ -60,9 +65,9 @@ class PenyintasCovidController extends Controller
                     }
                 })
                 ->make();
-        }
-
-        return view('admin.report.penyintas-covid');
+        }        
+        
+        return view('admin.report.penyintas-covid', ['monthlyChart' => $monthlyChart->build(), 'dayChart' => $dayChart->build()]);
     }
 
     public function exportExcel()

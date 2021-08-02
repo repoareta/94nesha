@@ -6,10 +6,29 @@
 
 @push('page-styles')
 <link rel="stylesheet" href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" type="text/css">
+<style>
+    .dataTables_wrapper .dataTable td, .dataTables_wrapper .dataTable th{
+        color: unset !important;
+    }
+</style>
 @endpush
 
 @section('content')
 <div class="container-fluid">
+    <!--begin::Chart-->
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="p-6 m-10 bg-white rounded shadow">
+                {!! $monthlyChart->container() !!}
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="p-6 m-10 bg-white rounded shadow">
+                {!! $dayChart->container() !!}
+            </div>
+        </div>
+    </div>
+    <!--end::Chart-->
     <!--begin::Card-->
     <div class="card card-custom card-sticky" id="kt_page_sticky_card">
         <div class="card-header" style="">
@@ -35,34 +54,32 @@
             </div>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-separate table-head-custom table-checkable nowrap" id="dataTable" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nama</th>
-                            <th scope="col">Jurusan</th>
-                            <th scope="col">Nama Kontak</th>
-                            <th scope="col">No Kontak</th>
-                            <th scope="col">Jenis Kelamin</th>
-                            <th scope="col">Tanggal Positiff</th>
-                            <th scope="col">Goldar</th>
-                            <th scope="col">Provinsi</th>
-                            <th scope="col">Kabupaten</th>
-                            <th scope="col">Kecamatan</th>
-                            <th scope="col">Desa</th>
-                            <th scope="col">Kondisi</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Ket Status</th>
-                            <th scope="col">Kebutuhan</th>
-                            <th scope="col">Meninggal Dunia</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
+            <table class="table table-striped table-separate table-head-custom table-checkable nowrap" id="dataTable" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nama</th>
+                        <th>Jurusan</th>
+                        <th>Nama Kontak</th>
+                        <th>No Kontak</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Tanggal Positiff</th>
+                        <th>Goldar</th>
+                        <th>Provinsi</th>
+                        <th>Kabupaten</th>
+                        <th>Kecamatan</th>
+                        <th>Desa</th>
+                        <th>Kondisi</th>
+                        <th>Status</th>
+                        <th>Ket Status</th>
+                        <th>Meninggal Dunia</th>
+                        <th>Kebutuhan</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </div>
     </div>
     <!--end::Card-->
@@ -171,14 +188,23 @@
 @endsection
 
 @push('page-scripts')
-    <!--Start::dataTable-->
+<!--Start::dataTable-->
 <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
+<script src="{{ $dayChart->cdn() }}"></script>
+<script src="{{ $monthlyChart->cdn() }}"></script>
+
+{{ $dayChart->script() }}
+{{ $monthlyChart->script() }}
+
 <!--End::dataTable-->
 <script type="text/javascript">
     $(document).ready( function () {
-        var t = $('#dataTable').DataTable({
-            
-			scrollX   : true,
+        var t = $('#dataTable').DataTable({   
+            fixedColumns: {
+                leftColumns: 3,
+                rightColumns: 2
+            },         
+            scrollX: true,
             processing: true,
             ordering: true,
             serverSide: true,
@@ -208,8 +234,8 @@
 				{data: 'kondisi', name: 'kondisi'},
 				{data: 'status', name: 'status'},
 				{data: 'ket_status', name: 'ket_status'},
-				{data: 'kebutuhan', name: 'kebutuhan'},
 				{data: 'meninggal_dunia', name: 'meninggal_dunia'},
+				{data: 'kebutuhan', name: 'kebutuhan'},
 				{data: 'action', name: 'action'},
 			]
 		});

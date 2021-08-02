@@ -21,7 +21,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-separate table-head-custom table-checkable nowrap" id="dataTable" style="width:100%">
+                <table class="table table-striped table-separate table-head-custom table-checkable nowrap" id="dataTable" style="width:100%">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -62,7 +62,9 @@
 <script type="text/javascript">
     $(document).ready( function () {
         var t = $('#dataTable').DataTable({
-            
+            fixedColumns: {
+                leftColumns: 3
+            },
 			scrollX   : true,
             processing: true,
             ordering: true,

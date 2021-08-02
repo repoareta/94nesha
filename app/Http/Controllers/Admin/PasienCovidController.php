@@ -20,16 +20,22 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
+use App\Charts\MonthlyPasienChart;
+use App\Charts\ThisDayPenyintasPasienChart;
 
 class PasienCovidController extends Controller
 {
 
-    public function index()
+    public function index(MonthlyPasienChart $monthlyChart, ThisDayPenyintasPasienChart $dayChart)
     {
         if(request()->ajax()){
-            $Query = PasienCovid::all();
+            $Query = PasienCovid::orderBy('id', 'DESC');
             return DataTables::of($Query)
                 ->addIndexColumn()
+                ->setRowClass(function ($data) {
+                    $hariIni = Carbon::parse($data->created_at)->format('Y-m-d');
+                    return $hariIni == Carbon::now()->format('Y-m-d') ? 'bg-success text-white' : '';
+                })
                 ->addColumn('jenkel', function($data){
                     return $data->jenkel == 'L' ? 'Laki-laki' : 'Perempuan';
                 })
@@ -75,7 +81,7 @@ class PasienCovidController extends Controller
                 ->make();
         }
 
-        return view('admin.report.pasien-covid');
+        return view('admin.report.pasien-covid', ['monthlyChart' => $monthlyChart->build(), 'dayChart' => $dayChart->build()]);
     }
 
     public function exportExcel()

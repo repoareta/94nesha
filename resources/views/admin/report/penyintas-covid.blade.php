@@ -6,10 +6,29 @@
 
 @push('page-styles')
 <link rel="stylesheet" href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" type="text/css">
+<style>
+    .dataTables_wrapper .dataTable td, .dataTables_wrapper .dataTable th{
+        color: unset !important;
+    }
+</style>
 @endpush
 
 @section('content')
 <div class="container-fluid">
+    <!--begin::Chart-->
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="p-6 m-10 bg-white rounded shadow">
+                {!! $monthlyChart->container() !!}
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="p-6 m-10 bg-white rounded shadow">
+                {!! $dayChart->container() !!}
+            </div>
+        </div>
+    </div>
+    <!--end::Chart-->
     <!--begin::Card-->
     <div class="card card-custom card-sticky" id="kt_page_sticky_card">
         <div class="card-header" style="">
@@ -36,7 +55,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-separate table-head-custom table-checkable nowrap" id="dataTable" style="width:100%">
+                <table class="table table-separate table-striped nowrap" id="dataTable" style="width:100%">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -69,11 +88,18 @@
     <!--Start::dataTable-->
 <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
 <!--End::dataTable-->
+<script src="{{ $dayChart->cdn() }}"></script>
+<script src="{{ $monthlyChart->cdn() }}"></script>
+
+{{ $dayChart->script() }}
+{{ $monthlyChart->script() }}
 <script type="text/javascript">
     $(document).ready( function () {
-        var t = $('#dataTable').DataTable({
-            
-			scrollX   : true,
+        var t = $('#dataTable').DataTable({   
+			fixedColumns: {
+                leftColumns: 3
+            },
+            scrollX: true,
             processing: true,
             ordering: true,
             serverSide: true,

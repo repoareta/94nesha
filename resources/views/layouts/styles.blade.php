@@ -31,5 +31,21 @@
         margin: auto;
         margin-top: 30px;
     }
+    .DTFC_LeftBodyWrapper {
+        top: -39px !important;
+        overflow-x: hidden;
+    }
+    .DTFC_LeftHeadWrapper{
+        top: -13px !important;
+        overflow-x: hidden;
+    }
+    .DTFC_RightBodyWrapper {
+        top: -39px !important;
+        overflow-x: hidden;
+    }
+    .DTFC_RightHeadWrapper{
+        top: -13px !important;
+        overflow-x: hidden;
+    }
 </style>
 <!--end::custom Css-->
