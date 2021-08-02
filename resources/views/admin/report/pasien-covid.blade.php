@@ -201,7 +201,7 @@
     $(document).ready( function () {
         var t = $('#dataTable').DataTable({   
             fixedColumns: {
-                leftColumns: 3,
+                leftColumns: 2,
                 rightColumns: 1
             },         
             scrollX: true,
